@@ -1,5 +1,7 @@
 # <b> Core Stratigraphy Visualization </b>
 
+[![View my project on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/173320) [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/fileexchange/v1?id=173320&file=demo.mlx)
+
 MATLAB functions to generate a cylindrical representation of a rock core, sediment core, or ice core.
 
 <img src="images/main-figure.jpg" alt="Core Stratigraphy Visualization Screenshot" width="600"/>
