@@ -2,6 +2,8 @@
 
 MATLAB functions to generate a cylindrical representation of a rock core, sediment core, or ice core.
 
+<img src="images/main-figure.jpg" alt="Core Stratigraphy Visualization Screenshot" width="600"/>
+
 ## <b> Table of Contents </b>
 <b>
 
@@ -215,6 +217,18 @@ legend('Mudstone','Dolomite','Limestone',...
 ```
 
 </small>
+
+View all of the color palettes.
+
+<small>
+
+```matlab
+core_colors() # no input arguments or output arguments
+```
+
+</small>
+
+<img src="images/core-color-palettes.jpg" alt="Color Palettes" width="600"/>
 
 ## <b> License </b>
 This project is licensed under the MIT License.
