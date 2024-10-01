@@ -6,9 +6,9 @@ MATLAB functions to generate a cylindrical representation of a rock core, sedime
 <b>
 
 - [How to cite](#how-to-cite)
-- [Documentation](#documentation) </b> <tt>
-  - [core_plot()](#core_plot) - </tt> Core stratigraphy plotting function <tt>
-  - [core_colors()](#core_colors) - </tt> Useful color palettes for core visualizations 
+- [Documentation](#documentation) </b>
+  - [core_plot()](#core_plot) - Core stratigraphy plotting function
+  - [core_colors()](#core_colors) - Useful color palettes for core visualizations 
   <b>
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -39,7 +39,7 @@ Weber, Austin M. (2024). Core Stratigraphy Visualization [Version #.#.#]. Github
 
 ## <b> Documentation </b>
 
-### <tt> core_plot </tt>
+### core_plot
 
 Core stratigraphy visualization
 
@@ -149,7 +149,7 @@ The <small>`Colors`</small> name-value pair has been written to accept colored l
 
 ---
 
-### <tt> core_colors </tt>
+### core_colors
 
 Core color palettes
 
