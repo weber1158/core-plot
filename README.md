@@ -126,14 +126,14 @@ legend('Clay','Siliceous ooze','Calcareous ooze')
 
 </small>
 
-Visualize a rock core using annual layer boundary data instead of layer thicknesses.
+Visualize a rock core using layer boundary data instead of layer thicknesses.
 
 <small>
 
 ```matlab
 layer_depths = [0 12 46 100];
 C = [225 169 95; 51 0 0; 152 129 123];
-core_plot(layer_thicknesses, Colors=C, Radius=5, ZDataType='depth');
+core_plot(layer_depths, Colors=C, Radius=5, ZDataType='depth');
 zlabel('Depth [m]')
 legend('Sandstone','Shale','Limestone')
 ```
