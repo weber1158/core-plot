@@ -50,6 +50,12 @@ function colorPalette = core_colors(varargin)
 % To do: Add some more distinguishable colors palettes
 %   In progress: {'#f54232','#5329f5','#b6fc9c'}
 
+% To do: Fix path issue that prevents users from viewing the 
+% color palette image when they are working in a different dir-
+% ectory. Currently, the `core_colors()` syntax with no inputs
+% does not work unless the user is working in the default folder
+% that contains the function file.
+
 if nargin==0
    figure('menubar','none',...
        'numbertitle','off')

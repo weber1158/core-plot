@@ -110,13 +110,6 @@ function [plt,patches] = core_plot(Z,varargin)
 
 % Copyright 2024 Austin M. Weber
 
-% To do: Add optional input argument to turn on "depths";
-%  because by default the function argument Z stacks cylinders
-%  by annual layer thickness and not be depth.
-%
-% To do: Adjust handle visibility so that legends are labeled for unique
-% colors only. No repeats.
-
 %% Input parsing
 % Create an input parser object
 parser = inputParser;
@@ -468,7 +461,7 @@ function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edge
 %
 % The command above will change the face color of the first patch object.
 %
-% If your core_plot has a legend, then the patch objects in "patches" that
+% If your basic_core_plot has a legend, then the patch objects in "patches" that
 % correspond to the legend will be multiples of 3. For example, if the
 % legend has 4 items, the index positions for the corresponding patch
 % objects will be [3 6 9 12]. 
@@ -479,9 +472,9 @@ function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edge
 %
 % The command above will change the face color of patches #2,5,8,11 to red.
 %
-% In addition to the patch objects, the core_plot() function uses rectangle
+% In addition to the patch objects, the basic_core_plot() function uses rectangle
 % objects to "cap" the cylinders in order to better hide any edge lines. To
-% change the color of the rectangle object at the top of the core_plot()
+% change the color of the rectangle object at the top of the basic_core_plot()
 % visualization, type the following command:
 %   >> rect = findall(gcf,'Type','rectangle');
 %   >> rect(1).FaceColor = 'r';
@@ -497,7 +490,7 @@ function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edge
 %
 % ...in order to create the cylindrical patches used in the core
 % visualization. Please also cite Al-Rumaithi (2024) if you use the
-% core_plot() function in publications.
+% basic_core_plot() function in publications.
 %
 % Special thanks are also extended to MATLAB user Voss for helping to
 % clarify the procedure for changing the colors of the patch objects as
