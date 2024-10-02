@@ -54,7 +54,10 @@ if nargin==0
    figure('menubar','none',...
        'numbertitle','off')
    axes('Position',[0 0 1 1])
-      image(imread('core-color-palettes.jpg'),"MaxRenderedResolution",1200); 
+      current_directory = cd;
+      img_path = [current_directory '/images/'];
+      img = [img_path 'core-color-palettes.jpg'];
+      image(imread(img),"MaxRenderedResolution",1200); 
       axis image off
    return
 end
