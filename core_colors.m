@@ -50,18 +50,13 @@ function colorPalette = core_colors(varargin)
 % To do: Add some more distinguishable colors palettes
 %   In progress: {'#f54232','#5329f5','#b6fc9c'}
 
-% To do: Fix path issue that prevents users from viewing the 
-% color palette image when they are working in a different dir-
-% ectory. Currently, the `core_colors()` syntax with no inputs
-% does not work unless the user is working in the default folder
-% that contains the function file.
-
 if nargin==0
    figure('menubar','none',...
        'numbertitle','off')
    axes('Position',[0 0 1 1])
-      current_directory = cd;
-      img_path = [current_directory '/images/'];
+      function_path = which('core_colors');
+      function_path(end-13:end) = []; % Removes '/core_colors.m' from the path name
+      img_path = [function_path '/images/'];
       img = [img_path 'core-color-palettes.jpg'];
       image(imread(img),"MaxRenderedResolution",1200); 
       axis image off
