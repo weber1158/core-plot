@@ -111,30 +111,35 @@ core_plot(layer_thicknesses);
 
 </small>
 
+---
+
 Specify the layer colors and the core thickness (radius).
 
 <small>
 
 ```matlab
 layer_thicknesses = [3 8 6 4 2 5];
-C = {'#FEA12C','#B147C3','#20D962'};
+C = {'#FEA12C','#B147C3','#20D962'}; % Hexidecimal colors
 r = 2;
 core_plot(layer_thicknesses, Colors=C, Radius=r);
 zlabel('Depth [cm]')
 legend('Clay','Siliceous ooze','Calcareous ooze')
 ```
+---
 
 <img src="images/example-colored-sediment-core.jpg" alt="colored core plot example" width="450"/>
 
 </small>
 
-Visualize a rock core using layer boundary data instead of layer thicknesses.
+---
+
+Visualize a rock core using layer boundary data instead of layer thicknesses, and specify RGB colors instead of hexidecimals.
 
 <small>
 
 ```matlab
 layer_depths = [0 12 46 100];
-C = [225 169 95; 51 0 0; 152 129 123];
+C = [225 169 95; 51 0 0; 152 129 123]; % RGB triplets
 core_plot(layer_depths, Colors=C, Radius=5, ZDataType='depth');
 zlabel('Depth [m]')
 legend('Sandstone','Shale','Limestone')
@@ -204,6 +209,8 @@ core_colors('ice',4)
         {'#5D88A8'} {'#ACE5EE'} {'#9F8170'} {'#003366'}
 ```
 
+---
+
 </small>
 
 Make a 3-layer core plot using the <small>`'rock'`</small> color palette.
@@ -214,12 +221,17 @@ Make a 3-layer core plot using the <small>`'rock'`</small> color palette.
 Z = [0.000 2.500 7.710 10.000];
 rock = core_colors('rock',3);
 figure
-core_plot(Z,Colors=rock,ZDataType='depth')
+core_plot(Z,Colors=rock,ZDataType='depth',Radius=0.7,...
+    EdgeLines=true,FaceAlpha=0.8,Light=false)
 zlabel('Depth [m]')
 title('Rock Core')
-legend('Mudstone','Dolomite','Limestone',...
+legend('Mudstone','Conglomerate','Dolomite',...
     'Location','east')
 ```
+
+<img src="images/example-detailed-rock-core.jpg" alt="core plot example using core colors" width="450"/>
+
+---
 
 </small>
 
