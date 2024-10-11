@@ -240,7 +240,7 @@ View all of the color palettes.
 <small>
 
 ```matlab
-core_colors() # no input arguments or output arguments
+core_colors() % no input arguments or output arguments
 ```
 
 </small>
