@@ -107,6 +107,7 @@ Visualize a sediment core.
 layer_thicknesses = [3 8 6 4 2 5];
 core_plot(layer_thicknesses);
 ```
+<img src="images/example-sediment-core.jpg" alt="simple core plot example" width="450"/>
 
 </small>
 
@@ -123,6 +124,8 @@ zlabel('Depth [cm]')
 legend('Clay','Siliceous ooze','Calcareous ooze')
 ```
 
+<img src="images/example-colored-sediment-core.jpg" alt="colored core plot example" width="450"/>
+
 </small>
 
 Visualize a rock core using layer boundary data instead of layer thicknesses.
@@ -136,6 +139,7 @@ core_plot(layer_depths, Colors=C, Radius=5, ZDataType='depth');
 zlabel('Depth [m]')
 legend('Sandstone','Shale','Limestone')
 ```
+<img src="images/example-rock-core.jpg" alt="core plot example using depths instead of thicknesses" width="450"/>
 
 </small>
 
@@ -229,7 +233,7 @@ core_colors() # no input arguments or output arguments
 
 </small>
 
-<img src="images/core-color-palettes.jpg" alt="Color Palettes" width="600"/>
+<img src="images/core-color-palettes.jpg" alt="Color Palettes" width="450"/>
 
 ## <b> License </b>
 This project is licensed under the MIT License.
