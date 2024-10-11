@@ -106,6 +106,7 @@ Visualize a sediment core.
 ```matlab
 layer_thicknesses = [3 8 6 4 2 5];
 core_plot(layer_thicknesses);
+zlabel('Depth [cm]')
 ```
 <img src="images/example-sediment-core.jpg" alt="simple core plot example" width="450"/>
 
