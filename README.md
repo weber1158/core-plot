@@ -22,19 +22,18 @@ MATLAB functions to generate a cylindrical representation of a rock core, sedime
 ## <b> How to cite </b>
 
 <b>APA</b>
-<small>
-```tex
-Weber, Austin M. (2024). Core Stratigraphy Visualization [Version #.#.#]. Github. https://www.github.com/weber1158/core-plot. Accessed on DD Month YYYY.
-```
-</small>
 
-<b>BibTeX</b>
+[comment]: <> (According https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/reference_list_electronic_sources.html)
+
+Weber, A. M. (2024). <em>Core stratigraphy visualization</em> (Version #.#.#). GitHub. https://github.com/weber1158/core-plot
+
+<b>BibLaTeX</b>
 <small>
 ```tex
 @software{coreplot2024,
     author = {{Austin M. Weber}},
     title = {{Core Stratigraphy Visualization}},
-    url = {https://www.github.com/weber1158/core-plot},
+    url = {https://github.com/weber1158/core-plot},
     version = {#.#.#}
     date = {YYYY-MM-DD}
 }
