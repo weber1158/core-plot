@@ -125,7 +125,6 @@ core_plot(layer_thicknesses, Colors=C, Radius=r);
 zlabel('Depth [cm]')
 legend('Clay','Siliceous ooze','Calcareous ooze')
 ```
----
 
 <img src="images/example-colored-sediment-core.jpg" alt="colored core plot example" width="450"/>
 
