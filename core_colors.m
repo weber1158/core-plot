@@ -2,7 +2,7 @@ function colorPalette = core_colors(varargin)
 %Core color palettes
 %
 %Description
-% Generate a cell array of hexidecimal colors useful for
+% Generate a cell array of hexadecimal colors useful for
 % core_plot() visualizations
 %
 %
@@ -23,11 +23,11 @@ function colorPalette = core_colors(varargin)
 %
 %
 %Outputs
-% colorPalette [cell array] - list of hexidecimal color codes
+% colorPalette [cell array] - list of hexadecimal color codes
 %
 %
 %Examples
-%   % Get list of four hexidecimal codes from the 'ice' color palette
+%   % Get list of four hexadecimal codes from the 'ice' color palette
 %   CORE_COLORS('ice',4)
 %      1x4 cell array
 %         {'#5D88A8'} {'#ACE5EE'} {'#9F8170'} {'#003366'}

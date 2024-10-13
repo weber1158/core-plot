@@ -84,7 +84,7 @@ Core stratigraphy visualization
 
 Name | Value | Description
 :-- | :-- | :--
-`Colors` | Cell vector or RGB matrix | Vector of hexidecimal codes or a matrix of RGB color codes. If the number of colors is less than the number of layers then the colors will repeat. If no colors are specified then the layers will be visualized using alternating shades of light and dark gray.
+`Colors` | Cell vector or RGB matrix | Vector of hexadecimal codes or a matrix of RGB color codes. If the number of colors is less than the number of layers then the colors will repeat. If no colors are specified then the layers will be visualized using alternating shades of light and dark gray.
 `Radius` | Numeric scalar | A number greater than 0 that specifies the radius of the cylindrical objects (default=`0.5`)
 `EdgeLines` | Logical | Specifies whether the edge lines of each layer should be displayed (default=`false`)
 `Light` | Logical | Toggles the lighting object (default=`true`)
@@ -114,13 +114,13 @@ zlabel('Depth [cm]')
 
 ---
 
-Specify the layer colors and the core thickness (radius).
+Specify the layer colors and the radius (width) of the core.
 
 <small>
 
 ```matlab
 layer_thicknesses = [3 8 6 4 2 5];
-C = {'#FEA12C','#B147C3','#20D962'}; % Hexidecimal colors
+C = {'#FEA12C','#B147C3','#20D962'}; % hexadecimal colors
 r = 2;
 core_plot(layer_thicknesses, Colors=C, Radius=r);
 zlabel('Depth [cm]')
@@ -133,7 +133,7 @@ legend('Clay','Siliceous ooze','Calcareous ooze')
 
 ---
 
-Visualize a rock core using layer boundary data instead of layer thicknesses, and specify RGB colors instead of hexidecimals.
+Visualize a rock core using layer boundary data instead of layer thicknesses, and specify RGB colors instead of hexadecimals.
 
 <small>
 
@@ -155,7 +155,7 @@ legend('Sandstone','Shale','Limestone')
 
 `core_plot` </small> uses functions from the Partial Differential Equations Toolbox in order to make the visualization. Users without the PDE Toolbox can still use <small>`core_plot`</small> in MATLAB Online, or, if the PDE Toolbox is not detected, the function will prompt the user if they would like to continue with a more basic core plotting visualization. 
 
-The <small>`Colors`</small> name-value pair has been written to accept colored lists specified as either a cell vector of hexidecimal codes or an <small>`N-by-3`</small> matrix of RGB triplets. RGB triplets are automatically divided by 255 if they are not already in the normalize range (0,1).
+The <small>`Colors`</small> name-value pair has been written to accept colored lists specified as either a cell vector of hexadecimal codes or an <small>`N-by-3`</small> matrix of RGB triplets. RGB triplets are automatically divided by 255 if they are not already in the normalize range (0,1).
 
 </small>
 
@@ -194,11 +194,11 @@ Core color palettes
 
 <small>
 
-`colorPalette` - </small> Cell vector of hexidecimal color codes.
+`colorPalette` - </small> Cell vector of hexadecimal color codes.
 
 <big>**Examples**</big>
 
-Get list of four hexidecimal codes from the <small>`'ice'`</small> color palette.
+Get list of four hexadecimal codes from the <small>`'ice'`</small> color palette.
 
 <small>
 

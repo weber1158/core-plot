@@ -22,7 +22,7 @@ function [plt,patches] = core_plot(Z,varargin)
 %
 %
 %NAME-VALUE PAIRS
-% Colors (Optional) :: Cell vector of hexidecimal colors OR a numeric
+% Colors (Optional) :: Cell vector of hexadecimal colors OR a numeric
 %  matrix of RGB color codes. If the number of colors is less than the
 %  number of layers then the colors will repeat. If no colors are specified
 %  then the layers will be visualized using alternating light and dark grays
@@ -100,7 +100,7 @@ function [plt,patches] = core_plot(Z,varargin)
 % continue with a more basic core plotting visualization.
 %
 % The "Colors" name-value pair has been written to accept colored lists
-% specified as either a cell vector of hexidecimal codes or an Nx3 matrix
+% specified as either a cell vector of hexadecimal codes or an Nx3 matrix
 % of RGB triplets. RGB triplets are automatically divided by 255 if they
 % are not already in the normalized range (0,1).
 %
@@ -653,7 +653,7 @@ function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edge
         % Get unique color and remove # from hex code
         hex = unique_colors{unique_color};
         hex(1) = [];
-        % Convert color from hexidecimal to normalized rgb
+        % Convert color from hexadecimal to normalized rgb
         rgb = (reshape(sscanf(hex,'%2x'),3,[])/255)';
         % Flip the patch objects to match the core orientation
         patches_flipped = flipud(patches);
