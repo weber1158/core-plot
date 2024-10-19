@@ -85,6 +85,7 @@ Core stratigraphy visualization
 Name | Value | Description
 :-- | :-- | :--
 `Colors` | Cell vector or RGB matrix | Vector of hexadecimal codes or a matrix of RGB color codes. If the number of colors is less than the number of layers then the colors will repeat. If no colors are specified then the layers will be visualized using alternating shades of light and dark gray.
+`LayerNames` | Cell or categorical vector | List of descriptor names for each layer that will be populated in the legend. The number of elements must match the number of layers.
 `Radius` | Numeric scalar | A number greater than 0 that specifies the radius of the cylindrical objects (default=`0.5`)
 `EdgeLines` | Logical | Specifies whether the edge lines of each layer should be displayed (default=`false`)
 `Light` | Logical | Toggles the lighting object (default=`true`)

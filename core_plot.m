@@ -122,6 +122,7 @@ default_light = true;
 default_faceAlpha = 1;
 default_edgeAlpha = 1;
 default_edgeWidth = 0.5;
+default_layerNames = [];
 default_viewAnlge = 'oblique';
 default_zDataType = 'thickness';
 
@@ -134,6 +135,7 @@ light_validation = @(x) islogical(x);
 faceAlpha_validation = @(x) isnumeric(x) & isscalar(x);
 edgeAlpha_validation = @(x) isnumeric(x) & isscalar(x);
 edgeWidth_validation = @(x) isnumeric(x) & isscalar(x);
+layerNames_validation= @(x) iscell(x) | iscategorical(x) | isempty(x);
 viewAnlge_validation = @(x) ischar(x);
 zDataType_validation = @(x) ischar(x);
 
@@ -146,6 +148,7 @@ addParameter(parser, 'Light', default_light, light_validation);
 addParameter(parser, 'FaceAlpha', default_faceAlpha, faceAlpha_validation);
 addParameter(parser, 'EdgeAlpha', default_edgeAlpha, edgeAlpha_validation);
 addParameter(parser, 'EdgeWidth', default_edgeWidth, edgeWidth_validation);
+addParameter(parser, 'LayerNames', default_layerNames, layerNames_validation);
 addParameter(parser, 'ViewAngle', default_viewAnlge, viewAnlge_validation);
 addParameter(parser, 'ZDataType', default_zDataType, zDataType_validation);
 
@@ -160,6 +163,7 @@ Light = parser.Results.Light;
 faceAlpha = parser.Results.FaceAlpha;
 edgeAlpha = parser.Results.EdgeAlpha;
 edgeWidth = parser.Results.EdgeWidth;
+layerNames= parser.Results.LayerNames;
 viewAngle = parser.Results.ViewAngle;
 zDataType = parser.Results.ZDataType;
 
@@ -177,7 +181,7 @@ if isequal(toolbox_idx,false)
     elseif strcmp(user_choice,'Yes')
         % Continue with the basic core plotting capabilities
         [plt,patches] = basic_core_plot(Z,C,r,edgeLines,Light,faceAlpha, ...
-                                        edgeAlpha,edgeWidth,viewAngle,zDataType);
+                                        edgeAlpha,edgeWidth,layerNames,viewAngle,zDataType);
         return
     end
 
@@ -215,13 +219,54 @@ end
 
 %% Set the colors of the layers
 patches = findobj(gca,'Type','patch');
+if ~isempty(layerNames)
+    %Check whether the correct number of layer names were specified
+    num_names = numel(layerNames);
+    num_C = numel(Z);
+       if num_names ~= num_C
+         error('The number of layer names does not match the number of layers.')
+       end
+    %Check whether num_names has the same number of unique values as C
+    [unique_names,~,unique_names_idx] = unique(layerNames);
+    num_unique_names = numel(unique_names);
+     if iscell(C)
+        unique_C = unique(C);
+        num_unique_C = numel(unique_C);
+     elseif isnumeric(C)
+        unique_C = unique(C,'rows');
+        num_unique_C = size(unique_C,1);
+     end
+    num_names_EQUALS_num_C = num_unique_names == num_unique_C; % true/false
+
+    if num_names_EQUALS_num_C == false
+      %Make a new C using distinguishable colors
+      new_colors = colormap(lines(num_unique_names));
+      C = zeros(num_names,3);
+      for i = 1:num_names
+       current_color = new_colors(unique_names_idx(i),:);
+       C(i,:) = current_color;
+      end
+    else
+      %Make a new C using the user-specified colors
+      if iscell(C)
+        C = cell(num_names,1);
+        for i = 1:num_names
+          current_color = unique_C{unique_names_idx(i)};
+          C{i} = current_color;
+        end
+      elseif isnumeric(C)
+        C = zeros(num_names,3);
+        for i = 1:num_names
+          current_color = unique_C(unique_names_idx(i),:);
+          C(i,:) = current_color;
+        end
+      end
+    end
+end
+
 if isequal(C,default_colors) 
     % No colors specified
     alternateColors(Z,C,patches); % Local function
-
-elseif ischar(C) 
-    % One char color specified (depreciated)
-    [patches.FaceColor] = deal(C);
 
 elseif iscell(C) & isscalar(C)
     % One hex color specified
@@ -333,6 +378,10 @@ elseif iscell(C)
     end
 end
 
+if ~isempty(layerNames)                                                                                 
+ %Add a legend to the plot
+ legend(gca,unique_names,'Location','east')
+end
 
 %% Fix axes appearances
 xlim(gca,[-r r])
@@ -445,7 +494,7 @@ function newC = basicRepeatRGBColors(numLayers,C)
     newC = newC(1:numLayers,:);
 end
 %-------------------------------------------------------------------
-function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edgealpha,edgewidth,viewangle,zdatatype)
+function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edgealpha,edgewidth,layernames,viewangle,zdatatype)
 %Basic core stratigraphy visualization
 %
 %Limitations
@@ -560,6 +609,52 @@ function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edge
     end
 
     % Assign colors to layers
+    if ~isempty(layernames)
+        %Check whether the correct number of layer names were specified
+        num_names = numel(layernames);
+        num_C = number_of_layers;
+          if num_names ~= num_C
+            error('The number of layer names does not match the number of layers.')
+          end
+        %Check whether num_names has the same number of unique values as C
+        [unique_names,~,unique_names_idx] = unique(layernames);
+        num_unique_names = numel(unique_names);
+          if iscell(C)
+              unique_C = unique(C);
+              num_unique_C = numel(unique_C);
+          elseif isnumeric(C)
+              unique_C = unique(C,'rows');
+              num_unique_C = size(unique_C,1);
+          end
+        num_names_EQUALS_num_C = num_unique_names == num_unique_C; % true/false
+        if num_names_EQUALS_num_C == false
+          %Make a new C using distinguishable colors
+          new_colors = colormap(lines(num_unique_names));
+          C = zeros(num_names,3);
+          for i = 1:num_names
+            current_color = new_colors(unique_names_idx(i),:);
+            C(i,:) = current_color;
+          end
+        else
+          %Make a new C using the user-specified colors
+          if iscell(C)
+            C = cell(num_names,1);
+            for i = 1:num_names
+              current_color = unique_C{unique_names_idx(i)};
+              C{i} = current_color;
+            end
+          elseif isnumeric(C)
+            C = zeros(num_names,3);
+            for i = 1:num_names
+              current_color = unique_C(unique_names_idx(i),:);
+              C(i,:) = current_color;
+            end
+          end
+
+        end
+
+    end
+
     if (isa(C,'cell') & (numel(C)==numel(Z)-1)) | (isa(C,'double') & (size(C,1)==numel(Z)-1))
         % EACH LAYER HAS A SPECIFIED COLOR
         colors_flipped = flip(C);
@@ -683,6 +778,11 @@ function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edge
         view(-45.0395,0)
       otherwise
         error('Invalid ViewAngle name-value pair. Must be either ViewAngle=''oblique'' or ViewAngle=''right''.')
+    end
+
+    if ~isempty(layernames)                                                                                 %%%%%%%%%%%%%%%%%%%%%%%%%%
+     %Add a legend to the plot
+     legend(gca,unique_names,'Location','east')
     end
 
     h=patches;
