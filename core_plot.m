@@ -239,13 +239,13 @@ if ~isempty(layerNames)
          error('The number of layer names does not match the number of layers.')
        end
     %Check whether num_names has the same number of unique values as C
-    [unique_names,~,unique_names_idx] = unique(layerNames);
+    [unique_names,~,unique_names_idx] = unique(layerNames,'stable');
     num_unique_names = numel(unique_names);
      if iscell(C)
-        unique_C = unique(C);
+        unique_C = unique(C,'stable');
         num_unique_C = numel(unique_C);
      elseif isnumeric(C)
-        unique_C = unique(C,'rows');
+        unique_C = unique(C,'rows','stable');
         num_unique_C = size(unique_C,1);
      end
     num_names_EQUALS_num_C = num_unique_names == num_unique_C; % true/false
@@ -629,13 +629,13 @@ function [h,patches] = basic_core_plot(Z,C,radius,edgelines,light,facealpha,edge
             error('The number of layer names does not match the number of layers.')
           end
         %Check whether num_names has the same number of unique values as C
-        [unique_names,~,unique_names_idx] = unique(layernames);
+        [unique_names,~,unique_names_idx] = unique(layernames,'stable');
         num_unique_names = numel(unique_names);
           if iscell(C)
-              unique_C = unique(C);
+              unique_C = unique(C,'stable');
               num_unique_C = numel(unique_C);
           elseif isnumeric(C)
-              unique_C = unique(C,'rows');
+              unique_C = unique(C,'rows','stable');
               num_unique_C = size(unique_C,1);
           end
         num_names_EQUALS_num_C = num_unique_names == num_unique_C; % true/false
