@@ -27,6 +27,10 @@ function [plt,patches] = core_plot(Z,varargin)
 %  number of layers then the colors will repeat. If no colors are specified
 %  then the layers will be visualized using alternating light and dark grays
 %
+% LayerNames (Optional) :: Cell or categorical vector containing a
+%  descriptor name for each layer that will be populated in the legend. The
+%  number of elements must match the number of layers.
+%
 % Radius (Optional) :: Numeric scalar specifying the radial width of the
 %  cylindrical patch objects (default = 0.5)
 %
@@ -82,6 +86,14 @@ function [plt,patches] = core_plot(Z,varargin)
 % CORE_PLOT(layer_thicknesses, Colors=C, Radius=r);
 % zlabel('Depth [cm]')
 % legend('Clay','Siliceous ooze','Calcareous ooze')
+%--------------------------------------------------
+% % Label the unique layers in the core and choose an appropriate
+% % color palette
+% Z = [3 6 4 5 2 7]; % 6 layer thicknesses
+% names = {'C1','C2','C3','C2','C3','C1'};
+% number_of_unique_names = numel(unique(names));
+% C = core_colors('sediment',number_of_unique_names);
+% core_plot(Z,LayerNames=names,Colors=C,Radius=3);
 %--------------------------------------------------
 % % Visualize a rock core using annual layer boundary
 % % data instead of layer thicknesses

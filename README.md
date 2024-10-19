@@ -100,7 +100,7 @@ Name | Value | Description
 
 <big>**Examples**</big>
 
-Visualize a sediment core.
+Visualize a simple core.
 
 <small>
 
@@ -149,6 +149,23 @@ legend('Sandstone','Shale','Limestone')
 
 </small>
 
+---
+
+Specify the layer names in a core and choose an appropriate color palette.
+
+<small>
+
+```matlab
+Z = [3 6 4 5 2 7];
+names = {'C1','C2','C3','C2','C3','C1'};
+number_of_unique_names = numel(unique(names));
+C = core_colors('sediment',number_of_unique_names);
+core_plot(Z,LayerNames=names,Colors=C,Radius=3);
+```
+
+<img src="images/example-core-plot-with-layer-names.jpg" alt="core plot with layer names and color palette" width="450"/>
+
+</small>
 
 <big>**Notes**</big>
 
@@ -186,7 +203,7 @@ Core color palettes
 
 `[no input]` - </small> If no inputs are specified, a dialogue box will open showing the three possible color palettes. <small>
 
-`palette` - </small> A string specifying the name of the color palette || `'ice'` OR `'sediment'` OR `'rock'` <small>
+`palette` - </small> A string specifying the name of the color palette || <small> `'ice'` OR `'sediment'` OR `'rock'`
 
 `n` - </small> Integer between 1 and 7 specifying the number of colors to extract from the palette.
 
