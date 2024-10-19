@@ -92,7 +92,7 @@ function [plt,patches] = core_plot(Z,varargin)
 % Z = [3 6 4 5 2 7]; % 6 layer thicknesses
 % names = {'C1','C2','C3','C2','C3','C1'};
 % number_of_unique_names = numel(unique(names));
-% C = core_colors('sediment',number_of_unique_names);
+% C = CORE_PLOT('sediment',number_of_unique_names);
 % core_plot(Z,LayerNames=names,Colors=C,Radius=3);
 %--------------------------------------------------
 % % Visualize a rock core using annual layer boundary

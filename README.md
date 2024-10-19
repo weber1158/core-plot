@@ -163,7 +163,7 @@ C = core_colors('sediment',number_of_unique_names);
 core_plot(Z,LayerNames=names,Colors=C,Radius=3);
 ```
 
-<img src="images/example-core-plot-with-layer-names.jpg" alt="core plot with layer names and color palette" width="450"/>
+<img src="images/example-layer-name-core-plot.jpg" alt="core plot with layer names and color palette" width="450"/>
 
 </small>
 
