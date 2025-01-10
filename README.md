@@ -28,7 +28,7 @@ MATLAB functions to generate a cylindrical representation of a rock core, sedime
 Weber, A. M. (2024). <em>Core stratigraphy visualization</em> (Version #.#.#). GitHub. https://github.com/weber1158/core-plot
 
 <b>BibLaTeX</b>
-<small>
+
 ```tex
 @software{coreplot2024,
     author = {{Austin M. Weber}},
@@ -38,7 +38,7 @@ Weber, A. M. (2024). <em>Core stratigraphy visualization</em> (Version #.#.#). G
     date = {YYYY-MM-DD}
 }
 ```
-</small>
+
 
 ## <b> Documentation </b>
 
@@ -48,7 +48,7 @@ Core stratigraphy visualization
 
 <big>**Syntax**</big>
 
-<small>
+
 
 `core_plot(Z)`
 
@@ -58,29 +58,29 @@ Core stratigraphy visualization
 
 `[plt,patches] = core_plot(Z)`
 
-</small>
+
 
 <big>**Input Arguments**</big>
 
-<small>
 
-`Z` - </small> Numeric vector specifying the thickness of each layer in the core from top to bottom. <small>
 
-`varargin` - </small> Optional name-value pairs.
+`Z` -  Numeric vector specifying the thickness of each layer in the core from top to bottom. 
+
+`varargin` -  Optional name-value pairs.
 
 
 <big>**Output Arguemnts**</big>
 
-<small>
 
-`plt` - </small> Returns handles to the graphics <small>
 
-`patches` - </small> Individual layer objects as a <small>`N-by-1 Patch`</small> where <small>`N`</small> represents the number of layers in the stratigraphic visualization. Access/modify the properties of a specific patch with indexing. (e.g., <small>`patches(2).FaceColor='#FE68B2'`</small>)
+`plt` -  Returns handles to the graphics 
+
+`patches` -  Individual layer objects as a `N-by-1 Patch` where `N` represents the number of layers in the stratigraphic visualization. Access/modify the properties of a specific patch with indexing. (e.g., `patches(2).FaceColor='#FE68B2'`)
 
 
 <big>**Name-Value Pairs (Optional)**</big>
 
-<small>
+
 
 Name | Value | Description
 :-- | :-- | :--
@@ -95,14 +95,14 @@ Name | Value | Description
 `ViewAngle` | Char | Character vector specifying the viewing angle. Either `oblique` (default) or `right`
 `ZDataType` | Char | Character vector specifying the type of `Z` data. By default, `ZDataType` is set to `'thickness'` meaning that each value in `Z` represents the thickness of a stratigraphic layer. The other option for `ZDataType` is `'depth'` which clarifies that the values in `Z` represent the depths bounding each layer. This means that the number of elements in `Z` must be equal to the number of layers +1 because each layer shares a top boundary with another layer's bottom boundary, except for the first layer which has a top boundary that it does not share. For example, if there are four values in `Z`, such as `Z=[0 2 4 6]`, then the corresponding stratigraphic visualization when `ZDataType='depth'` will contain only three layers.
 
-</small>
+
 
 
 <big>**Examples**</big>
 
 Visualize a simple core.
 
-<small>
+
 
 ```matlab
 layer_thicknesses = [3 8 6 4 2 5];
@@ -111,13 +111,13 @@ zlabel('Depth [cm]')
 ```
 <img src="images/example-sediment-core.jpg" alt="simple core plot example" width="450"/>
 
-</small>
+
 
 ---
 
 Specify the layer colors and the radius (width) of the core.
 
-<small>
+
 
 ```matlab
 layer_thicknesses = [3 8 6 4 2 5];
@@ -130,13 +130,13 @@ legend('Clay','Siliceous ooze','Calcareous ooze')
 
 <img src="images/example-colored-sediment-core.jpg" alt="colored core plot example" width="450"/>
 
-</small>
+
 
 ---
 
 Visualize a rock core using layer boundary data instead of layer thicknesses, and specify RGB colors instead of hexadecimals.
 
-<small>
+
 
 ```matlab
 layer_depths = [0 12 46 100];
@@ -147,13 +147,13 @@ legend('Sandstone','Shale','Limestone')
 ```
 <img src="images/example-rock-core.jpg" alt="core plot example using depths instead of thicknesses" width="450"/>
 
-</small>
+
 
 ---
 
 Specify the name of each layer and choose an appropriate color palette.
 
-<small>
+
 
 ```matlab
 Z = [3 6 4 5 2 7];
@@ -165,17 +165,17 @@ core_plot(Z,LayerNames=names,Colors=C,Radius=3);
 
 <img src="images/example-layer-name-core-plot.jpg" alt="core plot with layer names and color palette" width="450"/>
 
-</small>
+
 
 <big>**Notes**</big>
 
-<small>
 
-`core_plot` </small> uses functions from the Partial Differential Equations Toolbox in order to make the visualization. Users without the PDE Toolbox can still use <small>`core_plot`</small> in MATLAB Online, or, if the PDE Toolbox is not detected, the function will prompt the user if they would like to continue with a more basic core plotting visualization. 
 
-The <small>`Colors`</small> name-value pair has been written to accept colored lists specified as either a cell vector of hexadecimal codes or an <small>`N-by-3`</small> matrix of RGB triplets. RGB triplets are automatically divided by 255 if they are not already in the normalize range (0,1).
+`core_plot`  uses functions from the Partial Differential Equations Toolbox in order to make the visualization. Users without the PDE Toolbox can still use `core_plot` in MATLAB Online, or, if the PDE Toolbox is not detected, the function will prompt the user if they would like to continue with a more basic core plotting visualization. 
 
-</small>
+The `Colors` name-value pair has been written to accept colored lists specified as either a cell vector of hexadecimal codes or an `N-by-3` matrix of RGB triplets. RGB triplets are automatically divided by 255 if they are not already in the normalize range (0,1).
+
+
 
 ---
 
@@ -185,7 +185,7 @@ Core color palettes
 
 <big>**Syntax**</big>
 
-<small>
+
 
 `core_colors()`
 
@@ -195,30 +195,30 @@ Core color palettes
 
 `colorPalette = core_colors(...)`
 
-</small>
+
 
 <big>**Input Arguments**</big>
 
-<small>
 
-`[no input]` - </small> If no inputs are specified, a dialogue box will open showing the three possible color palettes. <small>
 
-`palette` - </small> A string specifying the name of the color palette || <small> `'ice'` OR `'sediment'` OR `'rock'`
+`[no input]` -  If no inputs are specified, a dialogue box will open showing the three possible color palettes. 
 
-`n` - </small> Integer between 1 and 7 specifying the number of colors to extract from the palette.
+`palette` -  A string specifying the name of the color palette ||  `'ice'` OR `'sediment'` OR `'rock'`
+
+`n` -  Integer between 1 and 7 specifying the number of colors to extract from the palette.
 
 
 <big>**Output Arguemnts**</big>
 
-<small>
 
-`colorPalette` - </small> Cell vector of hexadecimal color codes.
+
+`colorPalette` -  Cell vector of hexadecimal color codes.
 
 <big>**Examples**</big>
 
-Get list of four hexadecimal codes from the <small>`'ice'`</small> color palette.
+Get list of four hexadecimal codes from the `'ice'` color palette.
 
-<small>
+
 
 ```matlab
 core_colors('ice',4)
@@ -229,11 +229,11 @@ core_colors('ice',4)
 
 ---
 
-</small>
 
-Make a 3-layer core plot using the <small>`'rock'`</small> color palette.
 
-<small>
+Make a 3-layer core plot using the `'rock'` color palette.
+
+
 
 ```matlab
 Z = [0.000 2.500 7.710 10.000];
@@ -251,17 +251,17 @@ legend('Mudstone','Conglomerate','Dolomite',...
 
 ---
 
-</small>
+
 
 View all of the color palettes.
 
-<small>
+
 
 ```matlab
 core_colors() % no input arguments or output arguments
 ```
 
-</small>
+
 
 <img src="images/core-color-palettes.jpg" alt="Color Palettes" width="450"/>
 
@@ -269,7 +269,7 @@ core_colors() % no input arguments or output arguments
 This project is licensed under the MIT License.
 
 ## <b> Acknowledgements </b>
-The <small>`core_plot`</small> function uses code from Ayad Al-Rumaithi (2024) to generate the cylindrical objects in the visualization if the Paritial Differential Equations Toolbox is not found on the user's current path. I also thank MATLAB user Voss for clarifying the procedure needed to properly edit the patch objects in the non-PDE Toolbox visualization.
+The `core_plot` function uses code from Ayad Al-Rumaithi (2024) to generate the cylindrical objects in the visualization if the Paritial Differential Equations Toolbox is not found on the user's current path. I also thank MATLAB user Voss for clarifying the procedure needed to properly edit the patch objects in the non-PDE Toolbox visualization.
 
 
 <b>Reference</b>
